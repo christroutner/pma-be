@@ -23,6 +23,9 @@ services:
       dockerfile: production/docker/Dockerfile
     container_name: pma-be
     restart: unless-stopped
+    volumes:
+      # Host path: pma-be/production/data/files (relative to this compose file)
+      - ../data/files:/app/files
     depends_on:
       mongo:
         condition: service_healthy
